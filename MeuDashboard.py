@@ -1,12 +1,16 @@
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
+
+CAMINHO_CSV = Path(__file__).parent / 'vendas.csv'
 
 st.title('Dashboard de Vendas')
 
 
 @st.cache_data
 def carregar_dados():
-    df = pd.read_csv('vendas.csv', parse_dates=['data'])
+    df = pd.read_csv(CAMINHO_CSV, parse_dates=['data'])
     return df
 
 
